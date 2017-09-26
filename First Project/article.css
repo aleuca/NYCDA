@@ -17,15 +17,21 @@ iframe {
   color: black;
 }
 
-nav {
-    display: block;
+ul {
+  list-style-type: none;
+}
+
+li {
+  display: inline;
 }
 
 .article {
   display:block;
   padding: 40px;
+  text-align: center;
+  padding: 50px;
 }
 
 #cat {
-  padding: 20px;
+  margin-left: 600px;
 }
