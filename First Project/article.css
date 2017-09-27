@@ -1,5 +1,6 @@
-p {
+a {
   color:pink;
+  text-align: center;
 }
 
 img {
@@ -17,12 +18,30 @@ iframe {
   color: black;
 }
 
+nav {
+  border-style: solid;
+  background-color: black;
+  border-width: 50px;
+}
+
 ul {
   list-style-type: none;
+  border-color: pink;
+  padding: 20px;
 }
 
 li {
   display: inline;
+  margin: 20px;
+
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 .article {
