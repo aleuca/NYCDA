@@ -25,7 +25,7 @@ function validateUserName() {
   if(found_number) {
     return true
   } else {
-      name.addEventListener("mouseout", function(){document.getElementById("userError").innerHTML = "Your username must have a number";})
+      document.getElementById("userError").innerHTML = "Your username must have a number"
       return false
   }
 }
@@ -38,6 +38,7 @@ function validatePassword() {
   if (Number(password) == 12345678) {
     return true
   } else {
-    pass.addEventListener("mouseout", function(){document.getElementById("passwordError").innerHTML = "Your password must be 12345678";})
+    document.getElementById("passwordError").innerHTML = "Your password must be 12345678"
+    return false
   }
 }
