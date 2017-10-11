@@ -16,7 +16,6 @@ function validateUserName() {
   console.log("called")
   let found_number = false
   var user = document.forms["submitForm"]["username"].value
-  var name = document.forms["submitForm"]["username"]
   for(i = 0; i < user.length; i++) {
     if(Number(user[i])) {
       found_number = true
@@ -34,7 +33,6 @@ function validateUserName() {
 function validatePassword() {
   console.log("validate password reached")
   var password = document.forms["submitForm"]["password"].value
-  var pass = document.forms["submitForm"]["password"]
   if (Number(password) == 12345678) {
     return true
   } else {
