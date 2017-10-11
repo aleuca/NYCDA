@@ -22,6 +22,7 @@ function validateUserName() {
     }
   }
   if(found_number) {
+    document.getElementById("userError").innerHTML = ""
     return true
   } else {
       document.getElementById("userError").innerHTML = "Your username must have a number"
@@ -34,9 +35,18 @@ function validatePassword() {
   console.log("validate password reached")
   var password = document.forms["submitForm"]["password"].value
   if (Number(password) == 12345678) {
+    document.getElementById("passwordError").innerHTML = ""
     return true
   } else {
     document.getElementById("passwordError").innerHTML = "Your password must be 12345678"
     return false
   }
+}
+
+// changing header text to user input value
+var inputUser = document.getElementById('username');
+
+inputUser.onkeyup = function() {
+  console.log("hit onInput")
+  document.getElementById('header').innerHTML = inputUser.value
 }

@@ -6,13 +6,13 @@
   </head>
   <body>
     <h1 id="header">Signup</h1>
-    <form name="submitForm" onsubmit="return validateForm()">
+    <form name="submitForm" oninput="return validateForm()">
       Username:<br>
       <input type="text" name="username" id="username" oninput="return validateUserName()"><br><span id="userError"></span>
       Email:<br>
       <input type="email" name="email"><br><span id="emailError"></span>
       Password:<br>
-      <input type="password" name="password"><br><span id="passwordError" oninput="return validatePassword()"></span>
+      <input type="password" name="password" oninput="return validatePassword()"><br><span id="passwordError"></span>
       <input type="submit">
     </form>
   </body>
