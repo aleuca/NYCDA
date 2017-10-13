@@ -3,35 +3,42 @@ var playButton = document.getElementById('playButton')
 var stopButton = document.getElementById('stopButton')
 
 
-let clickedPlay = false
-function playSong(obj, obj2) {
-    obj.addEventListener("click", function() {
-        if(!clickedPlay) {
-            console.log("event")
+let playing = false
+function playSong(play, notPlaying) {
+    play.addEventListener("click", function() {
+        if(!playing) {
             audio.play()
-            obj.value = "pause"
-            clicked = true
+            play.value = "pause"
+            playing = true
+            console.log(playing, "event")
+
             return true
         } else {
-            console.log("event paused")
             audio.pause()
-            obj.value = "play"
-            clicked = false
+            play.value = "play"
+            playing = false
+            console.log(playing, "event paused")
+
             return false
         }
     })
-    obj2.addEventListener("click", function() {
-        if(!clickedPlay) {
-            console.log("event stopped")
-            obj.value = "play"
+    notPlaying.addEventListener("click", function() {
+        if(playing) {
+            play.value = "play"
             audio.pause()
             audio.currentTime = 0
-            clicked = true
+            playing = false
+            console.log(playing, "event stopped")
+
             return true
         }
     })
 }
 
-
-
 playSong(playButton, stopButton)
+
+// function addSong(addSong) {
+//     addSong.addEventListener("click", function() {
+
+// })
+// }
