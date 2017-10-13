@@ -1,25 +1,37 @@
 var audio = new Audio('../public/assets/mozart.mp3')
-var button = document.getElementById('button')
+var playButton = document.getElementById('playButton')
+var stopButton = document.getElementById('stopButton')
 
 
-
-function click() {
-    let clicked = false
-    button.addEventListener("click", function() {
-        if(!clicked) {
+let clickedPlay = false
+function playSong(obj, obj2) {
+    obj.addEventListener("click", function() {
+        if(!clickedPlay) {
             console.log("event")
             audio.play()
+            obj.value = "pause"
             clicked = true
             return true
         } else {
-            console.log("event stopped")
+            console.log("event paused")
             audio.pause()
+            obj.value = "play"
             clicked = false
             return false
+        }
+    })
+    obj2.addEventListener("click", function() {
+        if(!clickedPlay) {
+            console.log("event stopped")
+            obj.value = "play"
+            audio.pause()
+            audio.currentTime = 0
+            clicked = true
+            return true
         }
     })
 }
 
 
 
-click()
+playSong(playButton, stopButton)
