@@ -54,3 +54,12 @@ function sayHi() {
 }
 
 sayHi()
+
+var candy = 100
+if (candy > 50 && candy < 100) {
+  console.log('hi')
+} else if (candy > 100 && candy <200) {
+  console.log("bye")
+} else {
+  console.log("k")
+}
