@@ -19,7 +19,5 @@
     "url": "https://github.com/aleuca/NYCDA/issues"
   },
   "homepage": "https://github.com/aleuca/NYCDA#readme",
-  "dependencies": {
-    "howler": "^2.0.5"
-  }
+  "dependencies": {}
 }
