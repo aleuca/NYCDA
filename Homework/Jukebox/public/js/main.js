@@ -1,12 +1,13 @@
-var playButton = $('#playButton')
-var stopButton = $('#stopButton')
-var addButton = $('#addSong')
-var nextButton = $('#nextSong')
-var addRandom = $('#randomSong')
-var currentSongIndex = 0
+let playButton = $('#playButton')
+let stopButton = $('#stopButton')
+let addButton = $('#addSong')
+let nextButton = $('#nextSong')
+let previousButton = $('#previousSong')
+let addRandom = $('#randomSong')
+let currentSongIndex = 0
 
 
-var songBank = [
+let songBank = [
     {
         name: 'mozart',
         audio: new Audio('../public/assets/mozart.mp3')
@@ -30,19 +31,19 @@ const jukebox = {
     playing: false,
     play: function play() {
         jukebox.audio[currentSongIndex].audio.play()
-        playButton.value = "pause"
+        playButton.val("pause")
         jukebox.playing = true
     },
 
     pause: function pause() {
         jukebox.audio[currentSongIndex].audio.pause()
-        playButton.value = "play"
+        playButton.val("play")
         jukebox.playing = false
     },
 
     stop: function stop() {
         if(jukebox.audio.length) {
-            playButton.value = "play"
+            playButton.val("play")
             jukebox.audio[currentSongIndex].audio.pause()
             jukebox.audio[currentSongIndex].audio.currentTime = 0
             jukebox.playing = false
@@ -71,11 +72,11 @@ addButton.click(function() {
     if (jukebox.audio.length < songBank.length) {
         jukebox.audio.push(songBank[jukebox.audio.length])
         $('#newSong').html("")
-        var songName = songBank[jukebox.audio.length - 1].name
+        let songName = songBank[jukebox.audio.length - 1].name
         $('#playlist').before("<li>" + songName + "<input type=button value='+' id='" + songName +"'/></li>")
 
         $('#' + songName).click(function(){
-            for (var i = 0; i < songBank.length; i++) {
+            for (let i = 0; i < songBank.length; i++) {
                 if (songBank[i].name === songName) {
                     // insert into queue
                     jukebox.audio.push(songBank[i])
@@ -87,10 +88,23 @@ addButton.click(function() {
     }
 })
 
+
+let arrayLength = jukebox.audio.length
+
 nextButton.click(function() {
     jukebox.stop(currentSongIndex)
-    if (currentSongIndex < jukebox.audio.length - 1) {
+    if (currentSongIndex < arrayLength - 1) {
         currentSongIndex += 1
+    } else {
+        currentSongIndex = 0
+    }
+    jukebox.play(currentSongIndex)
+})
+
+previousButton.click(function() {
+    jukebox.stop(currentSongIndex)
+    if (currentSongIndex < arrayLength) {
+        currentSongIndex -= 1
     } else {
         currentSongIndex = 0
     }
