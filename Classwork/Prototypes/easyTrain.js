@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 class TrainStation {
     constructor(name) {
         this.name = name
@@ -6,67 +14,68 @@ class TrainStation {
 
     trainArrive(train) {
         this.trains.push(train)
-        return this.trains
     }
 
     trainDepart(train) {
-        for (let i = 0; i < this.trains.length; i++) {
-            if (trains[i] === train) {
-                trains.splice(i, 1)
-            }
-        }
-        return this.trains
+        this.trains.splice(this.trains.indexOf(train), 1);
     }
 
     report(train) {
-        let trainNames = []
-        this.trains.forEach((train) => {
-        trainNames.push(train.name)
-        })
-
-        trainNames = trainNames.join(", ")
-        console.log(`I am station ${this.name} and I have ${this.trains.length} trains: ${trainNames}`)
+        console.log(`${this.name} station has ${this.trains.length} trains:`)
     }
 }
 
 
 
 class Train {
-    constructor(name, currentStation) {
+    constructor(name, stops) {
         this.name = name
-        this.currentStation = currentStation
+        this.currentStationIndex = 0
+        this.stops = stops
     }
 
-    travelTo(newStation) {
-        if (this.currentStation === newStation) {
-            console.log(`- Train ${this.name} is already at ${this.currentStation.name} -- no need to go anywhere!`)
-            return
-        }
-        this.currentStation.trainDepart(this)
-        newStation.trainArrive(this)
-        this.currentStation = newStation
-        return this.currentStation.name
+    getCurrentStation() {
+        return this.stops[this.currentStationIndex];
     }
+
+    goToNextStop() {
+        this.getCurrentStation()
+        if (this.currentStationIndex === this.stops.length - 1) {
+            this.currentStationIndex = 0
+        } else {
+            this.currentStationIndex += 1
+        }
+
+
+
+        nextStation.trainArrive(this)
+        console.log("traveling!")
+    }
+
 
     report() {
-        console.log(`- I am train ${this.name} and I am at ${this.currentStation.name}!`)
+        console.log(`Train ${this.name} is at ${this.currentStation.name}!`)
     }
 }
 
-let station1 = new TrainStation("Amsterdam")
-let station2 = new TrainStation("Hague")
-let station3 = new TrainStation("Lisbon")
+let amsterdam = new TrainStation("Amsterdam")
+let hague = new TrainStation("Hague")
+let lisbon = new TrainStation("Lisbon")
+let vienna = new TrainStation("Vienna")
+let paris = new TrainStation("Paris")
 
-let train1 = new Train("Thomas", station1)
-let train2 = new Train("Bob", station2)
 
-train1.report()
-train2.report()
-train1.travelTo(station1)
-train1.travelTo(station3)
-train1.report()
-train2.travelTo(station1)
-train2.report()
+let thomas = new Train("Thomas", amsterdam, ["lisbon", "hague", "prague", "paris"])
+let bob = new Train("Bob", hague, ["paris", "rotterdam", "vienna"])
+
+
+thomas.travelTo(amsterdam)
+bob.goToNextStop(vienna)
+thomas.goToNextStop(paris)
+thomas.travelTo(lisbon)
+bob.travelTo(amsterdam)
+bob.report()
+thomas.report()
 
 
 
