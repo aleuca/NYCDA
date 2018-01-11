@@ -1,0 +1,3 @@
+WHAZZAP
+
+<a href="/gallery" >gallery page</h1>
