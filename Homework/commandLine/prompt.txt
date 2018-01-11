@@ -1,0 +1,3 @@
+Hello! Make a guess!
+Your guess is right!
+Bye!
