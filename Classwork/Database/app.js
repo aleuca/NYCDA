@@ -20,7 +20,7 @@ document.getElementById("submit").addEventListener("click", function saveUser() 
 
 })
 
-document.getElementById("frmSubmit").addEventListener("click",function lookup(event) {
+document.getElementById("frmSubmit").addEventListener("click", function lookup(event) {
     event.preventDefault()
     let imput = document.getElementById("lookup_age").value
     for (let i = 0; i < people.length; i++) {
