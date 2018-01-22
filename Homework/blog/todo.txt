@@ -1,0 +1,4 @@
+1) database
+2) define what a post looks like
+3) figure out what to send in the / route
+4) figure out what to send in /blogpost route

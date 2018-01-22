@@ -1,0 +1,10 @@
+ul
+    each blogpost in posts
+        h1= blogpost.title
+        li(class='abridged')= blogpost.text.slice(0, 10) + "..."
+        li(class='full', id=`paragraph.${blogpost.id}`)= blogpost.text
+        button(onclick=toggle(blogpost)) Read More
+
+
+script(src='whatever.js')
+
