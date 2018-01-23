@@ -1,10 +1,33 @@
+
+//- to expand on the same page
+script.
+    // toggle flips the display of both list elements for an id
+    function toggle(blogpostId) {
+        console.log(`Toggling for ${blogpostId}`)
+        toggleElement('short', blogpostId)
+        toggleElement('long', blogpostId)
+    }
+
+    // toggleElement flips the display for one list element
+    function toggleElement(prefix, blogpostId) {
+        let element = document.getElementById(`${prefix}.${blogpostId}`)
+        element.style.display = element.style.display === 'none' ? 'block' : 'none';
+    }
+
 ul
     each blogpost in posts
         h1= blogpost.title
-        li(class='abridged')= blogpost.text.slice(0, 10) + "..."
-        li(class='full', id=`paragraph.${blogpost.id}`)= blogpost.text
-        button(onclick=toggle(blogpost)) Read More
+        li(id=`short.${blogpost.id}`, style={display: 'block'})= blogpost.text.slice(0, 10) + "..."
+        li(id=`long.${blogpost.id}`, style={display: 'none'})= blogpost.text
+        button(onclick= `toggle(${blogpost.id})`) Read More
 
 
-script(src='whatever.js')
+
+
+//- to redirect to a new page
+//- ul
+//-     each blogpost in posts
+//-         h1= blogpost.title
+//-         li= blogpost.text.slice(0, 10) + "..."
+//-         a(href= `blogpost/${blogpost.id}`) Read More
 
