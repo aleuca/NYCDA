@@ -1,6 +1,7 @@
 let express = require('express');
 let app = express();
 const pug = require('pug');
+let port = 3000;
 
 
 
@@ -11,6 +12,6 @@ app.get("/", function(req, res) {
 })
 
 
-app.listen(3000, function() {
+app.listen(port, function() {
     console.log('running');
 })
